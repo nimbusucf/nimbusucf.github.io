@@ -6,7 +6,7 @@ subtitle: From clouds of data to breakthroughs in health.
 
 profile:
   align: right
-  image: Logo/Logo.png
+  image: logo/logo.png
   image_circular: false # crops the image to make it circular
   # more_info: >
     # <p>555 your office number</p>
