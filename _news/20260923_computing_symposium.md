@@ -6,4 +6,4 @@ inline: True
 related_posts: false
 ---
 
-Jose became champion on the student poster competition at 2026 UCF Research Computing Symposium, supported by AWS.
+Our Ph.D. student, Jose, became champion on the student poster competition at 2026 UCF Research Computing Symposium, supported by AWS.
