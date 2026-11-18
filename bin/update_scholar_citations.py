@@ -61,6 +61,7 @@ def get_scholar_citations() -> None:
             )
 
     citation_data = {"metadata": {"last_updated": today}, "papers": {}}
+    existing_data = None
 
     scholarly.set_timeout(15)
     scholarly.set_retries(3)
@@ -93,8 +94,15 @@ def get_scholar_citations() -> None:
                 continue
 
             title = pub.get("bib", {}).get("title", "Unknown Title")
-            year = pub.get("bib", {}).get("pub_year", "Unknown Year")
+            year = pub.get("bib", {}).get("pub_year") or pub.get("bib", {}).get("year") or "Unknown Year"
             citations = pub.get("num_citations", 0)
+            authors = pub.get("bib", {}).get("author", "")
+            venue = pub.get("bib", {}).get("venue", "")
+            citation_view_id = pub_id if ":" in pub_id else f"{SCHOLAR_USER_ID}:{pub_id}"
+            scholar_url = (
+                "https://scholar.google.com/citations?view_op=view_citation"
+                f"&hl=en&user={SCHOLAR_USER_ID}&citation_for_view={citation_view_id}"
+            )
 
             print(f"Found: {title} ({year}) - Citations: {citations}")
 
@@ -102,11 +110,27 @@ def get_scholar_citations() -> None:
                 "title": title,
                 "year": year,
                 "citations": citations,
+                "authors": authors,
+                "venue": venue,
+                "url": scholar_url,
             }
         except Exception as e:
             print(
                 f"Error processing publication '{pub.get('bib', {}).get('title', 'Unknown')}': {e}. This publication will be skipped."
             )
+
+    # Newest first; entries without a numeric year go last.
+    def _year_sort_key(paper):
+        try:
+            return (1, int(paper.get("year")))
+        except (TypeError, ValueError):
+            return (0, 0)
+
+    citation_data["papers_list"] = sorted(
+        ({"id": pub_id, **data} for pub_id, data in citation_data["papers"].items()),
+        key=_year_sort_key,
+        reverse=True,
+    )
 
     # Compare new data with existing data
     if existing_data and existing_data.get("papers") == citation_data["papers"]:
@@ -115,7 +139,7 @@ def get_scholar_citations() -> None:
 
     try:
         with open(OUTPUT_FILE, "w") as f:
-            yaml.dump(citation_data, f, width=1000, sort_keys=True)
+            yaml.dump(citation_data, f, width=1000, sort_keys=True, allow_unicode=True)
         print(f"Citation data saved to {OUTPUT_FILE}")
     except Exception as e:
         print(
