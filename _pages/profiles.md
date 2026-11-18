@@ -1,25 +1,73 @@
 ---
-layout: profiles
+layout: page
 permalink: /team/
 title: Team
 description: Members of NIMBUS
 nav: true
 nav_order: 7
-
-profiles:
-  # if you want to include more than one profile, just replicate the following block
-  # and create one content file for each profile inside _pages/
-  - align: left
-    # image: prof_pic.jpg
-    content: team/laura.md
-    image_circular: false # crops the image to make it circular
-    more_info: >
-      <p>Associate Professor</p>
-  - align: left
-    # image: prof_pic.jpg
-    content: team/farhan_fuad_abir.md
-    image_circular: false # crops the image to make it circular
-    more_info: >
-      <p>Pursuing PhD in Computer Engineer</p>
-  
 ---
+
+<style>
+  .team-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+  }
+  .professor-photo {
+    max-width: 240px;
+    margin-bottom: 0.75rem;
+  }
+  .team-member-name {
+    margin-top: 0.6rem;
+    font-weight: 600;
+  }
+  .team-segment-title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.35rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.35);
+    padding-bottom: 0.35rem;
+  }
+</style>
+
+{% assign professor = site.data.team.professor %}
+
+<hr />
+<div class="profile float-left">
+  {% if professor.photo and professor.photo != '' %}
+    <img
+      src="{{ professor.photo | prepend: 'assets/img/' | relative_url }}"
+      alt="{{ professor.name }}"
+      class="team-photo professor-photo"
+    />
+  {% endif %}
+  <div class="more-info">
+    <p>{{ professor.title }}</p>
+  </div>
+</div>
+<div class="clearfix">
+  {% capture professor_content %}{% include_relative {{ professor.content }} %}{% endcapture %}
+  {{ professor_content | markdownify }}
+</div>
+
+{% for segment in site.data.team.segments %}
+  <h2 class="team-segment-title">{{ segment.title }}</h2>
+  <div class="row">
+    {% for member in segment.members %}
+      {% if member.photo and member.photo != '' %}
+        {% assign photo_path = member.photo | prepend: 'assets/img/' %}
+      {% else %}
+        {% assign photo_path = 'assets/img/team/placeholder.svg' %}
+      {% endif %}
+      <div class="col-6 col-md-4 col-lg-3 mb-4">
+        <img src="{{ photo_path | relative_url }}" alt="{{ member.name }}" class="team-photo" loading="lazy" />
+        <div class="team-member-name text-center">{{ member.name }}</div>
+        {% if member.address and member.address != '' %}
+          <div class="team-member-address text-center text-muted small">{{ member.address }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endfor %}

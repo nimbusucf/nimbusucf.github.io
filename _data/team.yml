@@ -1,0 +1,40 @@
+# NIMBUS team roster — drives the Team page (/team/).
+#
+# professor: shown first with the full profile (text lives in _pages/<content>).
+# segments:  shown after the professor, in the order below.
+#   photo:    path relative to assets/img/ (e.g. team/farhan.jpg).
+#             Leave blank to show the rectangular silhouette placeholder.
+#   address:  shown under the name when set; omit or leave blank if not given.
+
+professor:
+  name: Laura Brattain, PhD
+  title: Associate Professor
+  photo: # e.g. team/laura.jpg
+  address: # e.g. Room 401, ...
+  content: team/laura.md # full profile text (professor only)
+
+segments:
+  - id: postdocs
+    title: Postdoctoral Researchers
+    members: []
+
+  - id: phd
+    title: PhD Students
+    members:
+      - name: Farhan Fuad Abir
+        photo:
+        address:
+      - name: M Iffat Hossain
+        photo:
+        address:
+      - name: Jose Gabriel Gonzalez Nunez
+        photo:
+        address:
+
+  - id: masters
+    title: Masters Students
+    members: []
+
+  - id: undergrads
+    title: Undergraduate Students
+    members: []
