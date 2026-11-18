@@ -8,6 +8,12 @@ nav_order: 7
 ---
 
 <style>
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.75rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
   .team-photo {
     width: 100%;
     aspect-ratio: 3 / 4;
@@ -21,7 +27,14 @@ nav_order: 7
   }
   .team-member-name {
     margin-top: 0.6rem;
+    margin-bottom: 0.15rem;
     font-weight: 600;
+    text-align: center;
+  }
+  .team-member-address {
+    text-align: center;
+    font-size: 0.875rem;
+    opacity: 0.75;
   }
   .team-segment-title {
     margin-top: 2rem;
@@ -54,18 +67,18 @@ nav_order: 7
 
 {% for segment in site.data.team.segments %}
   <h2 class="team-segment-title">{{ segment.title }}</h2>
-  <div class="row">
+  <div class="team-grid">
     {% for member in segment.members %}
       {% if member.photo and member.photo != '' %}
         {% assign photo_path = member.photo | prepend: 'assets/img/' %}
       {% else %}
         {% assign photo_path = 'assets/img/team/placeholder.svg' %}
       {% endif %}
-      <div class="col-6 col-md-4 col-lg-3 mb-4">
+      <div class="team-member">
         <img src="{{ photo_path | relative_url }}" alt="{{ member.name }}" class="team-photo" loading="lazy" />
-        <div class="team-member-name text-center">{{ member.name }}</div>
+        <div class="team-member-name">{{ member.name }}</div>
         {% if member.address and member.address != '' %}
-          <div class="team-member-address text-center text-muted small">{{ member.address }}</div>
+          <div class="team-member-address">{{ member.address }}</div>
         {% endif %}
       </div>
     {% endfor %}
