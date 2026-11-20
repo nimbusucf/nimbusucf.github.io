@@ -1,0 +1,68 @@
+name: Update conference deadlines
+
+on:
+  schedule:
+    - cron: "23 6 * * *" # daily at 06:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  update-deadlines:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run deadline update script
+        shell: bash
+        run: |
+          set +e
+          timeout 120 python bin/update_ccf_deadlines.py
+          status=$?
+          set -e
+          if [ $status -ne 0 ]; then
+            echo "Deadline update failed with exit code $status."
+            echo "Deadline update failed with exit code $status." >> $GITHUB_STEP_SUMMARY
+            exit $status
+          fi
+          echo "Deadline update succeeded." >> $GITHUB_STEP_SUMMARY
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+
+      - name: Commit and push if changed
+        id: commit
+        run: |
+          git add _data/conferences.yml
+          if git diff --staged --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No deadline changes to commit."
+          else
+            echo "Committing updated deadlines..."
+            git commit -m "Update conference deadlines"
+            git push
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      # A GITHUB_TOKEN push does not start other workflows (anti-recursion),
+      # so dispatch the deploy explicitly — workflow_dispatch is exempt.
+      - name: Trigger site deployment
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Deadlines changed — triggering deploy workflow..."
+          gh workflow run deploy.yml

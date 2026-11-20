@@ -100,6 +100,7 @@ Where things live:
 - _pages/about.md         home page
 - _pages/team/laura.md    professor's bio
 - _pages/publications.md  publications page (auto-filled from Google Scholar)
+- _data/conferences.yml    dashboard: conference selection + manual deadlines (AUTO section is generated)
 - assets/img/             images (team photos in assets/img/team/)
 - README.md               how to update this repo
 - alfolio_readme.md       original al-folio documentation
@@ -135,8 +136,9 @@ Tips:
 | Team members/photos   | `_data/team.yml`, `assets/img/team/`   |
 | Professor bio         | `_pages/team/laura.md`                 |
 | News                  | `_news/YYYYMMDD_slug.md`               |
+| Conference deadlines  | `_data/conferences.yml`                |
 | Home page text        | `_pages/about.md`                      |
 | Selected publications | `_bibliography/papers.bib`             |
 | Publications (auto)   | Google Scholar → `_data/citations.yml` |
 
-Publications refresh automatically from Dr. Brattain's Google Scholar profile on the 1st and 15th of each month (Actions → "Update Google Scholar Citations").
+Publications refresh automatically from Dr. Brattain's Google Scholar profile on the 1st and 15th of each month (Actions → "Update Google Scholar Citations"). Conference deadlines on the Dashboard refresh daily from [ccfddl/ccf-deadlines](https://github.com/ccfddl/ccf-deadlines) (Actions → "Update conference deadlines"); hand-maintained entries go under `manual:` in `_data/conferences.yml`.
