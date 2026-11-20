@@ -2,6 +2,8 @@
 #
 # professor: shown first with the full profile (text lives in _pages/<content>).
 # segments:  shown after the professor, in the order below.
+#   layout:   cards (default) = portrait photo + name + address;
+#             list            = plain bullet list without pictures
 #   photo:    path relative to assets/img/ (e.g. team/farhan.jpg).
 #             Leave blank to show the rectangular silhouette placeholder.
 #   address:  shown under the name when set; omit or leave blank if not given.
@@ -37,4 +39,10 @@ segments:
 
   - id: undergrads
     title: Undergraduate Students
+    layout: list
+    members: []
+
+  - id: alumni
+    title: Alumni
+    layout: list
     members: []
