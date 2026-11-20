@@ -69,7 +69,7 @@ nav_order: 7
     />
   {% endif %}
   <div class="more-info">
-    <p>{{ professor.title }}</p>
+    <!-- <p>{{ professor.title }}</p> -->
     {% if professor.address and professor.address != '' %}
       <p>{{ professor.address }}</p>
     {% endif %}
