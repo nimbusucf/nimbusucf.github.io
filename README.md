@@ -86,7 +86,49 @@ Edit or delete the corresponding file in `_news/`.
 
 ---
 
-## 3. Updating the Dashboard (conference deadlines)
+## 3. Updating the Prospective Members page
+
+The page (`/prospective/`) is a single file: [`_pages/prospective.md`](_pages/prospective.md).
+
+### Edit the content
+
+1. Open `_pages/prospective.md` and edit the text below the front matter — leave the front matter block intact.
+2. The contact address is a normal markdown link in the body:
+
+   ```markdown
+   [laura.brattain@ucf.edu](mailto:laura.brattain@ucf.edu)
+   ```
+
+   If the address ever changes, update both the visible text and the `mailto:` part.
+
+3. Commit and push to `main`.
+
+### Enable or disable the page
+
+The `hide:` flag in the front matter controls visibility:
+
+1. Open `_pages/prospective.md`.
+2. Set `hide: true` to **disable** the page, or `hide: false` to **show** it:
+
+   ```yaml
+   hide: false # visible: appears in the menu and at /prospective/
+   ```
+
+   ```yaml
+   hide: true # hidden: removed from the menu, the URL and the sitemap
+   ```
+
+3. Commit and push to `main` — the change takes effect on the next deploy.
+
+Notes:
+
+- `hide: true` removes the page completely (menu, URL, sitemap).
+- `nav: false` is a lighter option: keeps the page reachable at `/prospective/` but drops it from the menu only.
+- The hide flag is honored by [`_plugins/hide_pages.rb`](_plugins/hide_pages.rb) — plain Jekyll ignores `published: false` for pages.
+
+---
+
+## 4. Updating the Dashboard (conference deadlines)
 
 The Dashboard (`/dashboard/`) is driven by one file: [`_data/conferences.yml`](_data/conferences.yml). It has three parts: `selected:` (conferences fetched automatically), `manual:` (hand-maintained entries), and an AUTO section between markers that only the daily job may rewrite — never edit the AUTO section by hand.
 
@@ -134,7 +176,7 @@ Notes:
 
 ---
 
-## 4. Instructing an AI agent (OpenCode, Claude Code, …)
+## 5. Instructing an AI agent (OpenCode, Claude Code, …)
 
 Give the agent this context together with the task, for example:
 
@@ -148,6 +190,7 @@ Where things live:
 - _pages/about.md         home page
 - _pages/team/laura.md    professor's bio
 - _pages/publications.md  publications page (auto-filled from Google Scholar)
+- _pages/prospective.md   prospective members page (hide: true hides it completely)
 - _data/conferences.yml    dashboard: conference selection + manual deadlines (AUTO section is generated)
 - assets/img/             images (team photos in assets/img/team/)
 - README.md               how to update this repo
