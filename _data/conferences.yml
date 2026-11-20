@@ -31,8 +31,23 @@ selected:
   - aaai
   - ijcai
   - ismb
+  - acl
+  - ijcnn
+  - iclr
+  - wacv
 
-manual: []
+manual:
+  - name: IEEE EMBC
+    year: 2027
+    link: https://embc.embs.org/2027/ # optional
+    timezone: AoE # optional; default UTC (AoE also accepted)
+    deadlines:
+      - type: Full Paper Submission
+        date: "2027-01-24 23:59:59"
+      - type: Accept/Reject Notification
+        date: "2027-04-16 23:59:59"
+      - type: Final Submission
+        date: "2027-04-30 23:59:59"
 # manual:
 #   - name: Example Workshop
 #     year: 2027
