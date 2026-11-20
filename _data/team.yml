@@ -10,32 +10,46 @@
 
 professor:
   name: Laura Brattain, PhD
-  title: Associate Professor
-  photo: # e.g. team/laura.jpg
-  address: # e.g. Room 401, ...
+  title: Associate Professor, Dept. of Medicine
+  photo: team/laura.jpg
+  address: BBS450
   content: team/laura.md # full profile text (professor only)
 
 segments:
   - id: postdocs
     title: Postdoctoral Researchers
-    members: []
+    members:
+      - name: M Shifat Hossain
+        photo: team/shifat.jpeg
+        address: SPRK230
+
+SPRK 230, 4356 Scorpius St, Orlando, Florida 32816 
 
   - id: phd
     title: PhD Students
     members:
       - name: Farhan Fuad Abir
-        photo:
+        photo: team/farhan.jpeg
         address:
       - name: M Iffat Hossain
-        photo:
+        photo: team/iffat.jpeg
+        address:
+      - name: Samin Yaser
+        photo: team/samin.jpeg
+        address:
+      - name: Mahad Ali
+        photo: team/mahad.jpeg
         address:
       - name: Jose Gabriel Gonzalez Nunez
-        photo:
+        photo: team/jose.jpeg
         address:
 
   - id: masters
     title: Masters Students
-    members: []
+    members:
+      - name: Daryl Docteur
+        photo: team/daryl.jpeg
+        address:
 
   - id: undergrads
     title: Undergraduate Students
