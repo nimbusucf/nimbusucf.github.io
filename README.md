@@ -86,7 +86,55 @@ Edit or delete the corresponding file in `_news/`.
 
 ---
 
-## 3. Instructing an AI agent (OpenCode, Claude Code, …)
+## 3. Updating the Dashboard (conference deadlines)
+
+The Dashboard (`/dashboard/`) is driven by one file: [`_data/conferences.yml`](_data/conferences.yml). It has three parts: `selected:` (conferences fetched automatically), `manual:` (hand-maintained entries), and an AUTO section between markers that only the daily job may rewrite — never edit the AUTO section by hand.
+
+### Add a conference for automatic fetching
+
+1. Find the conference's acronym in the [ccfddl/ccf-deadlines](https://github.com/ccfddl/ccf-deadlines) repository — files live at `conference/<category>/<name>.yml` in lowercase (e.g. `conference/MX/miccai.yml`). Search the repository for the conference name.
+2. Open `_data/conferences.yml` and add the lowercase acronym under `selected:`:
+
+   ```yaml
+   selected:
+     - miccai
+     - your-new-conference
+   ```
+
+3. Commit and push to `main`. The next daily run (06:23 UTC) — or a manual run via **Actions → "Update conference deadlines" → Run workflow** — fetches every still-future deadline for that conference and shows it on the Dashboard, sorted by soonest deadline.
+
+Notes:
+
+- Only announced, future deadlines appear; venues whose dates are still `TBD` appear automatically once ccfddl publishes them.
+- Past deadlines disappear on their own.
+
+### Add a manual entry (conferences not in ccfddl)
+
+1. Open `_data/conferences.yml` and add an entry under `manual:`:
+
+   ```yaml
+   manual:
+     - name: NIMBUS Symposium
+       year: 2027
+       link: https://example.com # optional
+       timezone: UTC-5 # optional; default UTC (AoE also accepted)
+       deadlines:
+         - type: Full Paper Submission
+           date: "2027-01-15 23:59:59"
+         - type: Registration
+           date: "2027-02-01 23:59:59"
+   ```
+
+2. Commit and push to `main` — the entry renders immediately, no fetch needed.
+
+Notes:
+
+- Manual entries are never overwritten: the daily job only rewrites the AUTO section between the `==== AUTO BEGIN ====` and `==== AUTO END ====` markers.
+- `date` is wall-clock time in the entry's `timezone` (UTC when omitted).
+
+---
+
+## 4. Instructing an AI agent (OpenCode, Claude Code, …)
 
 Give the agent this context together with the task, for example:
 
