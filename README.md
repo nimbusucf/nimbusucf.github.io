@@ -179,14 +179,15 @@ Tips:
 
 ## Quick reference
 
-| Task                  | File(s)                                |
-| --------------------- | -------------------------------------- |
-| Team members/photos   | `_data/team.yml`, `assets/img/team/`   |
-| Professor bio         | `_pages/team/laura.md`                 |
-| News                  | `_news/YYYYMMDD_slug.md`               |
-| Conference deadlines  | `_data/conferences.yml`                |
-| Home page text        | `_pages/about.md`                      |
-| Selected publications | `_bibliography/papers.bib`             |
-| Publications (auto)   | Google Scholar → `_data/citations.yml` |
+| Task                  | File(s)                                            |
+| --------------------- | -------------------------------------------------- |
+| Team members/photos   | `_data/team.yml`, `assets/img/team/`               |
+| Professor bio         | `_pages/team/laura.md`                             |
+| News                  | `_news/YYYYMMDD_slug.md`                           |
+| Conference deadlines  | `_data/conferences.yml`                            |
+| Prospective Members   | `_pages/prospective.md` (set `hide: true` to hide) |
+| Home page text        | `_pages/about.md`                                  |
+| Selected publications | `_bibliography/papers.bib`                         |
+| Publications (auto)   | Google Scholar → `_data/citations.yml`             |
 
 Publications refresh automatically from Dr. Brattain's Google Scholar profile on the 1st and 15th of each month (Actions → "Update Google Scholar Citations"). Conference deadlines on the Dashboard refresh daily from [ccfddl/ccf-deadlines](https://github.com/ccfddl/ccf-deadlines) (Actions → "Update conference deadlines"); hand-maintained entries go under `manual:` in `_data/conferences.yml`.
