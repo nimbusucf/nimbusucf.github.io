@@ -21,9 +21,7 @@ segments:
     members:
       - name: M Shifat Hossain
         photo: team/shifat.jpeg
-        address: SPRK230
-
-SPRK 230, 4356 Scorpius St, Orlando, Florida 32816 
+        address: SPRK 230, 4356 Scorpius St, Orlando, Florida 32816
 
   - id: phd
     title: PhD Students
@@ -41,7 +39,7 @@ SPRK 230, 4356 Scorpius St, Orlando, Florida 32816
         photo: team/mahad.jpeg
         address:
       - name: Jose Gabriel Gonzalez Nunez
-        photo: team/jose.jpeg
+        photo: team/Jose.jpg
         address:
 
   - id: masters
