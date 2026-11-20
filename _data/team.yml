@@ -21,26 +21,26 @@ segments:
     members:
       - name: M Shifat Hossain
         photo: team/shifat.jpeg
-        address: SPRK 230, 4356 Scorpius St, Orlando, Florida 32816
+        address: SPRK 230
 
   - id: phd
     title: PhD Students
     members:
       - name: Farhan Fuad Abir
         photo: team/farhan.jpeg
-        address:
+        address: BMS125
       - name: M Iffat Hossain
         photo: team/iffat.jpeg
-        address:
+        address: BMS125
       - name: Samin Yaser
         photo: team/samin.jpeg
-        address:
+        address: BMS125
       - name: Mahad Ali
         photo: team/mahad.jpeg
-        address:
+        address: BMS125
       - name: Jose Gabriel Gonzalez Nunez
         photo: team/Jose.jpg
-        address:
+        address: BMS125
 
   - id: masters
     title: Masters Students
