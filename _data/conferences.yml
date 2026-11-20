@@ -35,6 +35,7 @@ selected:
   - ijcnn
   - iclr
   - wacv
+  - iros
 
 manual:
   - name: IEEE EMBC
