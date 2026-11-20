@@ -69,6 +69,13 @@ ccf:
     - type: Decision
       at: '2026-12-01T11:59:59Z'
       display: 2026-11-30 23:59:59 UTC-12
+  - name: ICLR
+    year: 2027
+    link: https://iclr.cc/Conferences/2027
+    deadlines:
+    - type: Decision
+      at: '2026-12-17T11:59:59Z'
+      display: 2026-12-16 23:59:59 AoE
   - name: IJCAI
     year: 2027
     link: https://2027.ijcai.org/
@@ -85,6 +92,13 @@ ccf:
     - type: Decision
       at: '2027-04-22T11:59:59Z'
       display: 2027-04-21 23:59:59 AoE
+  - name: ACL
+    year: 2027
+    link: https://2027.aclweb.org/
+    deadlines:
+    - type: Full Paper Submission
+      at: '2027-01-05T11:59:59Z'
+      display: 2027-01-04 23:59:59 UTC-12
   - name: ISMB
     year: 2027
     link: https://www.iscb.org/ismbeccb2027/
@@ -108,6 +122,16 @@ ccf:
     - type: Decision
       at: '2027-05-04T11:59:59Z'
       display: 2027-05-03 23:59:59 AoE
+  - name: IJCNN
+    year: 2027
+    link: https://ijcnn.org/2027
+    deadlines:
+    - type: Full Paper Submission
+      at: '2027-02-01T11:59:59Z'
+      display: 2027-01-31 23:59:59 UTC-12
+    - type: Decision
+      at: '2027-03-16T11:59:59Z'
+      display: 2027-03-15 23:59:59 UTC-12
   - name: CVPR
     year: 2027
     link: https://cvpr.thecvf.com/Conferences/2027
@@ -118,4 +142,11 @@ ccf:
     - type: Decision
       at: '2027-02-26T11:59:59Z'
       display: 2027-02-25 23:59:59 UTC-12
+  - name: IROS
+    year: 2027
+    link: https://2027.ieee-iros.org/
+    deadlines:
+    - type: Full Paper Submission
+      at: '2027-03-02T11:59:59Z'
+      display: 2027-03-01 23:59:59 AoE
 # ==== AUTO END ====
