@@ -49,6 +49,17 @@ manual:
         date: "2027-04-16 23:59:59"
       - type: Final Submission
         date: "2027-04-30 23:59:59"
+  - name: DDW
+    year: 2027
+    link: https://embc.embs.org/2027/ # optional
+    timezone: UTC-5 # optional; default UTC (AoE also accepted)
+    deadlines:
+      - type: Abstract
+        date: "2026-12-02 20:59:59"
+      - type: Registration Start
+        date: "2027-01-27 23:59:59"
+      - type: Early Bird Registration End
+        date: "2027-03-10 23:59:59"
 # manual:
 #   - name: Example Workshop
 #     year: 2027
