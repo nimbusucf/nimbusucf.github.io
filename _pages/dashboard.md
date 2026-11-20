@@ -85,6 +85,7 @@ nav_order: 3
 {% assign now_iso = site.time | date: '%Y-%m-%dT%H:%M:%SZ' %}
 {% assign any_entry = false %}
 
+<div class="deadline-list">
 {% for conf in site.data.conferences.ccf.conferences %}
 {% assign conf_future = false %}
 {% for d in conf.deadlines %}
@@ -156,6 +157,7 @@ nav_order: 3
 </div>
 </div>
 {% endfor %}
+</div>
 
 {% unless any_entry %}
 <p>No upcoming conference deadlines right now — check back soon.</p>
@@ -249,7 +251,37 @@ Auto-updated daily from
         section.style.display = anyVisible ? '' : 'none';
       });
     }
+    function sortSections() {
+      var list = document.querySelector('.deadline-list');
+      if (!list) {
+        return;
+      }
+      var entries = Array.prototype.map.call(
+        list.querySelectorAll('.deadline-conf'),
+        function (section) {
+          var earliest = Infinity;
+          Array.prototype.forEach.call(section.querySelectorAll('.deadline-item'), function (item) {
+            if (item.style.display === 'none') {
+              return;
+            }
+            var circle = item.querySelector('.cd-circle');
+            var target = circle && circle._target;
+            if (target && !isNaN(target.getTime())) {
+              earliest = Math.min(earliest, target.getTime());
+            }
+          });
+          return { section: section, earliest: earliest };
+        }
+      );
+      entries.sort(function (a, b) {
+        return a.earliest - b.earliest;
+      });
+      entries.forEach(function (entry) {
+        list.appendChild(entry.section);
+      });
+    }
     tick();
+    sortSections();
     setInterval(tick, 1000);
   })();
 </script>
