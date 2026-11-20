@@ -78,34 +78,29 @@ nav_order: 7
 </div>
 
 {% for segment in site.data.team.segments %}
-  <h2 class="team-segment-title">{{ segment.title }}</h2>
-  {% if segment.layout == 'list' %}
-    <ul class="team-list">
-      {% for member in segment.members %}
-        <li>
-          {{ member.name }}
-          {% if member.address and member.address != '' %}
-            <span class="team-list-address">&mdash; {{ member.address }}</span>
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <div class="team-grid">
-      {% for member in segment.members %}
-        {% if member.photo and member.photo != '' %}
-          {% assign photo_path = member.photo | prepend: 'assets/img/' %}
-        {% else %}
-          {% assign photo_path = 'assets/img/team/placeholder.svg' %}
-        {% endif %}
-        <div class="team-member">
-          <img src="{{ photo_path | relative_url }}" alt="{{ member.name }}" class="team-photo" loading="lazy" />
-          <div class="team-member-name">{{ member.name }}</div>
-          {% if member.address and member.address != '' %}
-            <div class="team-member-address">{{ member.address }}</div>
-          {% endif %}
-        </div>
-      {% endfor %}
-    </div>
-  {% endif %}
+<h2 class="team-segment-title">{{ segment.title }}</h2>
+{% if segment.layout == 'list' %}
+<ul class="team-list">
+{% for member in segment.members %}
+<li>{{ member.name }}{% if member.address and member.address != '' %} <span class="team-list-address">&mdash; {{ member.address }}</span>{% endif %}</li>
+{% endfor %}
+</ul>
+{% else %}
+<div class="team-grid">
+{% for member in segment.members %}
+{% if member.photo and member.photo != '' %}
+{% assign photo_path = member.photo | prepend: 'assets/img/' %}
+{% else %}
+{% assign photo_path = 'assets/img/team/placeholder.svg' %}
+{% endif %}
+<div class="team-member">
+<img src="{{ photo_path | relative_url }}" alt="{{ member.name }}" class="team-photo" loading="lazy" />
+<div class="team-member-name">{{ member.name }}</div>
+{% if member.address and member.address != '' %}
+<div class="team-member-address">{{ member.address }}</div>
+{% endif %}
+</div>
+{% endfor %}
+</div>
+{% endif %}
 {% endfor %}
